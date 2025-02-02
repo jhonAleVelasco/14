@@ -199,6 +199,7 @@
             </div>
         </div>
 
+        <div class="current-time" id="current-time"></div>
     </div>
 
     <script>
@@ -239,7 +240,8 @@
                 minute: '2-digit',
                 second: '2-digit'
             };
-        
+            document.getElementById('current-time').textContent = 
+                `Hora actual: ${new Date().toLocaleTimeString('es-ES', options)}`;
         }
 
         document.addEventListener('DOMContentLoaded', () => {
