@@ -151,13 +151,6 @@
             font-weight: 400;
         }
 
-        .current-time {
-            margin-top: 2rem;
-            color: var(--slate);
-            font-size: 0.9rem;
-            font-style: italic;
-        }
-
         @media (max-width: 768px) {
             .countdown-grid {
                 grid-template-columns: 1fr 1fr;
@@ -198,8 +191,6 @@
                 <div class="label">Segundos</div>
             </div>
         </div>
-
-        <div class="current-time" id="current-time"></div>
     </div>
 
     <script>
@@ -230,18 +221,6 @@
             document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
             document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
             document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
-            
-            const options = {
-                weekday: 'long',
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric',
-                hour: '2-digit',
-                minute: '2-digit',
-                second: '2-digit'
-            };
-            document.getElementById('current-time').textContent = 
-                `Hora actual: ${new Date().toLocaleTimeString('es-ES', options)}`;
         }
 
         document.addEventListener('DOMContentLoaded', () => {
