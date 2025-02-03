@@ -94,6 +94,7 @@
             max-width: 800px;
             width: 90%;
             backdrop-filter: blur(5px);
+            margin-bottom: 2rem;
             border: 1px solid var(--trigo);
         }
 
@@ -164,12 +165,159 @@
                 font-size: 2rem;
             }
         }
+
+        .bouquet-container {
+            position: fixed;
+            bottom: 50px;
+            right: 50px;
+            width: 200px;
+            height: 200px;
+            z-index: 999;
+            pointer-events: none;
+            animation: floatBouquet 4s ease-in-out infinite;
+            filter: drop-shadow(2px 2px 5px rgba(0,0,0,0.2));
+        }
+
+        .bouquet-container-left {
+            position: fixed;
+            bottom: 50px;
+            left: 50px;
+            width: 200px;
+            height: 200px;
+            z-index: 999;
+            pointer-events: none;
+            animation: floatBouquetLeft 4s ease-in-out infinite;
+            filter: drop-shadow(2px 2px 5px rgba(0,0,0,0.2));
+        }
+
+        .sunflower {
+            position: absolute;
+            width: 50px;
+            height: 80px;
+            background: 
+                radial-gradient(circle at 50% 40%, #8B0000 15%, transparent 16%),
+                radial-gradient(circle at 30% 30%, #8B0000 12%, transparent 13%),
+                radial-gradient(circle at 70% 30%, #8B0000 12%, transparent 13%),
+                linear-gradient(to bottom, #FFD700 60%, #FFA500 100%);
+            border-radius: 50% 50% 40% 40%;
+            transform-origin: bottom center;
+            animation: petalShine 3s ease-in-out infinite;
+        }
+
+        .sunflower::before {
+            content: '';
+            position: absolute;
+            bottom: -90px;
+            left: 18px;
+            width: 12px;
+            height: 110px;
+            background: linear-gradient(to right, #228B22 40%, #006400 100%);
+            border-radius: 5px;
+            transform: rotate(-5deg);
+            z-index: -1;
+        }
+
+        .sunflower::after {
+            content: '';
+            position: absolute;
+            bottom: -50px;
+            left: -20px;
+            width: 35px;
+            height: 35px;
+            background: #228B22;
+            border-radius: 50% 0;
+            transform: rotate(45deg);
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+        }
+
+        @keyframes floatBouquet {
+            0%, 100% { transform: translateY(0) rotate(-5deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        @keyframes floatBouquetLeft {
+            0%, 100% { transform: translateY(0) rotate(5deg); }
+            50% { transform: translateY(-20px) rotate(-5deg); }
+        }
+
+        @keyframes petalShine {
+            0%, 100% { filter: brightness(1); }
+            50% { filter: brightness(1.2); }
+        }
+
+        .bouquet-container div:nth-child(1) { 
+            transform: translate(30px, 50px) rotate(10deg);
+            z-index: 3;
+        }
+        .bouquet-container div:nth-child(2) { 
+            transform: translate(80px, 20px) rotate(-5deg);
+            z-index: 2;
+        }
+        .bouquet-container div:nth-child(3) { 
+            transform: translate(120px, 70px) rotate(15deg);
+            z-index: 1;
+        }
+
+        .bouquet-container-left div:nth-child(1) { 
+            transform: translate(30px, 50px) rotate(-10deg);
+            z-index: 3;
+        }
+        .bouquet-container-left div:nth-child(2) { 
+            transform: translate(80px, 20px) rotate(5deg);
+            z-index: 2;
+        }
+        .bouquet-container-left div:nth-child(3) { 
+            transform: translate(120px, 70px) rotate(-15deg);
+            z-index: 1;
+        }
+
+        .message-container {
+            position: relative;
+            width: 90%;
+            max-width: 600px;
+            margin: 2rem auto;
+            animation: slideIn 1s ease-out forwards;
+        }
+
+        .special-message {
+            margin-top: 1rem;
+            padding: 1rem;
+            background: rgba(245, 222, 179, 0.3);
+            border-radius: 10px;
+            font-style: italic;
+            color: var(--rojo-oscuro);
+            border-left: 4px solid var(--rojo-oscuro);
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
     </style>
 </head>
 <body>
     <div class="hearts-container" id="heartsContainer"></div>
     <div class="water-effect"></div>
     
+    <!-- Ramos de girasoles -->
+    <div class="bouquet-container">
+        <div class="sunflower"></div>
+        <div class="sunflower"></div>
+        <div class="sunflower"></div>
+    </div>
+    
+    <div class="bouquet-container-left">
+        <div class="sunflower"></div>
+        <div class="sunflower"></div>
+        <div class="sunflower"></div>
+    </div>
+
     <div class="container">
         <h1>Nuestro San Valentín Terranova</h1>
         
@@ -190,6 +338,20 @@
                 <div class="number" id="seconds">00</div>
                 <div class="label">Segundos</div>
             </div>
+        </div>
+    </div>
+
+    <div class="message-container">
+        <div class="special-message">
+            Hoy, quiero recordarte que eres tan fuerte y valiente como la raza que nos une: noble como un Terranova, de corazón gigante y lealtad inquebrantable. 🌟<br>
+            <br>
+Sé que las olas del trabajo están agitadas y que pronto enfrentarás esos descargos, pero aquí estoy yo, tu compañero fiel, para ser tu puerto seguro. Como los Terranova que rescatan en medio de la tormenta, yo navegaré a tu lado, abrazándote con palabras de aliento y confianza. 🌊🐾<br>
+<br>
+No olvides que, así como estos perros llevan luz en la oscuridad, tú tienes el poder de transformar cualquier desafío en triunfo. Y si algún día sientes que el peso es mucho, recuéstate en mí… porque contigo, soy el humano más afortunado, y juntos somos un equipo imparable. 💪❤️<br>
+<br>
+Pase lo que pase, siempre serás mi heroína de pelaje suave y mi eterna Valentine.<br>
+<br>
+Te amo más que todos los ladridos del mundo. 🐶💘<br>
         </div>
     </div>
 
