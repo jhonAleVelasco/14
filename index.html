@@ -29,7 +29,13 @@
             align-items: center;
             justify-content: center;
             position: relative;
-            overflow: hidden;
+            overflow-x: hidden;
+            overflow-y: auto;
+            padding: 20px 0;
+        }
+
+        .word-search-container {
+            margin-bottom: 100px; /* Espacio para los ramos */
         }
 
         .water-effect {
@@ -151,21 +157,38 @@
             letter-spacing: 1px;
             font-weight: 400;
         }
-
         @media (max-width: 768px) {
-            .countdown-grid {
-                grid-template-columns: 1fr 1fr;
+            .word-search-container {
+                padding: 1rem;
+                margin: 1rem auto;
             }
-            
-            h1 {
-                font-size: 2.5rem;
+
+            .word-search-grid {
+                gap: 1px;
+                min-width: 300px;
             }
-            
-            .number {
-                font-size: 2rem;
+
+            .word-search-cell {
+                width: 24px;
+                height: 24px;
+                font-size: 0.7rem;
+                pointer-events: auto; /* Asegurar que las celdas son clickables */
+            }
+
+            .word-list {
+                columns: 1;
+                text-align: center;
             }
         }
-
+        
+        @media (max-width: 480px) {
+            .word-search-cell {
+                width: 22px;
+                height: 22px;
+                font-size: 0.65rem;
+            }
+        }
+        
         .bouquet-container {
             position: fixed;
             bottom: 50px;
@@ -299,6 +322,90 @@
                 transform: translateY(0);
             }
         }
+
+          /* Agregamos estos nuevos estilos */
+          .word-search-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(139, 0, 0, 0.1);
+            position: relative;
+            overflow-x: auto;
+        }
+
+        .word-search-grid {
+            grid-template-columns: repeat(20, 1fr);
+            display: grid;
+            gap: 1px;
+            margin: 1rem 0;
+            min-width: 540px; /* Ancho mínimo para 20 columnas */
+        }
+
+        .word-search-cell {
+            width: 27px;
+            height: 27px;
+            border: 1px solid var(--trigo);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background: white;
+            font-size: 0.8rem;
+            line-height: 1;
+            padding: 0;
+            box-sizing: border-box;
+            position: relative;
+        }
+
+        .word-search-cell:hover {
+            transform: scale(1.1);
+            z-index: 2;
+        }
+
+        .word-search-cell.selected {
+            background: var(--rosa-claro);
+            z-index: 2; /* Asegurar que la selección se vea sobre el tachado */
+        }
+
+        .word-list {
+            columns: 2;
+            margin-top: 1.5rem;
+            font-style: italic;
+            color: var(--rojo-oscuro);
+            column-gap: 2rem;
+        }
+
+        /* Agregar estilo para palabras encontradas */
+        .word-found {
+            background: #8B000015 !important;
+            position: relative;
+            text-decoration: none;
+            pointer-events: none; /* Nueva línea importante */
+        }
+        
+        .word-found::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--rojo-oscuro);
+            transform: rotate(-45deg);
+            opacity: 0.7;
+            pointer-events: none; /* Asegurar que no interfiera */
+        }
+
+        .word-list span.found {
+            text-decoration: line-through;
+            color: #8B0000;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+        }
     </style>
 </head>
 <body>
@@ -355,41 +462,217 @@ Te amo más que todos los ladridos del mundo. 🐶💘<br>
         </div>
     </div>
 
-    <script>
-        function createHearts(num) {
-            const container = document.getElementById('heartsContainer');
-            container.innerHTML = '';
-            for(let i = 0; i < num; i++) {
-                const heart = document.createElement('div');
-                heart.className = 'heart';
-                heart.style.left = `${Math.random() * 100}%`;
-                heart.style.animationDelay = `${Math.random() * 5}s`;
-                container.appendChild(heart);
+    <div class="word-search-container">
+        <h2 style="font-family: 'Great Vibes', cursive; color: var(--rojo-oscuro); text-align: center;">
+            Sopa de Amor Terranova
+        </h2>
+        <div class="word-search-grid" id="wordSearchGrid"></div>
+        <div class="word-list">
+            Palabras a encontrar: Terranova, Corazon, 
+            Amor, Cariño, Equipo, Mirada, Abrazo, Promesa, 
+            Lealtad, Nadador, Peludo, Gigante, Palo, Rescate, 
+            Tranquilo, Protector, Ternura, Valentía, Compromiso, 
+            Paciencia, Broma, Aventura, Perdón, Madriguera, Travieso
+        </div>
+    </div>
+
+   <script>
+    function createHearts(num) {
+        const container = document.getElementById('heartsContainer');
+        container.innerHTML = '';
+        for (let i = 0; i < num; i++) {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.style.left = `${Math.random() * 100}%`;
+            heart.style.animationDelay = `${Math.random() * 5}s`;
+            container.appendChild(heart);
+        }
+    }
+
+    const targetDate = new Date(2025, 1, 14).getTime();
+
+    function updateCountdown() {
+        const now = new Date().getTime();
+        const distance = targetDate - now;
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        document.getElementById('days').textContent = days.toString().padStart(2, '0');
+        document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+        document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+        document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+    }
+
+    const gridSize = 20;
+    let selectedCells = [];
+    const foundWords = new Set();
+
+    const wordDefinitions = [
+        { word: 'TERRANOVA', x: 0, y: 0, direction: 'horizontal' },
+        { word: 'CORAZON', x: 0, y: 5, direction: 'vertical' },
+        { word: 'AMOR', x: 10, y: 3, direction: 'diagonal' },
+        { word: 'CARIÑO', x: 15, y: 0, direction: 'vertical' },
+        { word: 'EQUIPO', x: 8, y: 10, direction: 'horizontal' },
+        { word: 'MIRADA', x: 2, y: 15, direction: 'horizontal' },
+        { word: 'ABRAZO', x: 12, y: 7, direction: 'vertical' },
+        { word: 'PROMESA', x: 3, y: 12, direction: 'horizontal' },
+        { word: 'LEALTAD', x: 5, y: 12, direction: 'horizontal' },
+        { word: 'NADADOR', x: 18, y: 9, direction: 'vertical' },
+        { word: 'PELUDO', x: 14, y: 14, direction: 'horizontal' },
+        { word: 'GIGANTE', x: 9, y: 2, direction: 'vertical' },
+        { word: 'PALO', x: 17, y: 17, direction: 'horizontal' },
+        { word: 'RESCATE', x: 1, y: 10, direction: 'horizontal' },
+        { word: 'TRANQUILO', x: 0, y: 13, direction: 'vertical' },
+        { word: 'PROTECTOR', x: 11, y: 0, direction: 'horizontal' },
+        { word: 'TERNURA', x: 6, y: 6, direction: 'horizontal' },
+        { word: 'VALENTIA', x: 13, y: 5, direction: 'vertical' },
+        { word: 'COMPROMISO', x: 0, y: 14, direction: 'horizontal' },
+        { word: 'PACIENCIA', x: 4, y: 10, direction: 'vertical' },
+        { word: 'BROMA', x: 16, y: 4, direction: 'horizontal' },
+        { word: 'AVENTURA', x: 7, y: 13, direction: 'horizontal' },
+        { word: 'PERDON', x: 19, y: 11, direction: 'vertical' },
+        { word: 'TRAVIESO', x: 2, y: 7, direction: 'horizontal' },
+        { word: 'MADRIGUERA', x: 5, y: 3, direction: 'horizontal' }
+    ];
+
+    function createWordSearch() {
+        const grid = document.getElementById('wordSearchGrid');
+        grid.innerHTML = '';
+        const wordGrid = Array.from({ length: gridSize }, () => Array(gridSize).fill(null));
+
+        // Insertar palabras en el grid
+        wordDefinitions.forEach(def => {
+            const word = def.word.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toUpperCase();
+            let x = def.x, y = def.y;
+
+            for (let i = 0; i < word.length; i++) {
+                if (x < gridSize && y < gridSize) {
+                    wordGrid[y][x] = word[i];
+                    switch(def.direction) {
+                        case 'horizontal': x++; break;
+                        case 'vertical': y++; break;
+                        case 'diagonal': x++; y++; break;
+                    }
+                }
+            }
+        });
+
+        // Rellenar espacios vacíos y crear celdas
+        for (let y = 0; y < gridSize; y++) {
+            for (let x = 0; x < gridSize; x++) {
+                const cell = document.createElement('div');
+                cell.className = 'word-search-cell';
+                cell.textContent = wordGrid[y][x] || String.fromCharCode(65 + Math.floor(Math.random() * 26));
+                cell.dataset.x = x;
+                cell.dataset.y = y;
+                cell.addEventListener('click', () => toggleCell(cell));
+                grid.appendChild(cell);
+            }
+        }
+    }
+
+    function toggleCell(cell) {
+        if (cell.classList.contains('word-found')) return;
+
+        if (selectedCells.length === 0) {
+            // Primera selección
+            cell.classList.add('selected');
+            selectedCells.push(cell);
+        } else {
+            // Selección continua
+            const first = selectedCells[0];
+            const last = cell;
+
+            const startX = parseInt(first.dataset.x);
+            const startY = parseInt(first.dataset.y);
+            const endX = parseInt(last.dataset.x);
+            const endY = parseInt(last.dataset.y);
+
+            const deltaX = endX - startX;
+            const deltaY = endY - startY;
+            const direction = Math.abs(deltaX) === Math.abs(deltaY) ? 'diagonal' :
+                                deltaY === 0 ? 'horizontal' : 'vertical';
+
+            // Limpiar selección anterior
+            selectedCells.forEach(c => c.classList.remove('selected'));
+            selectedCells = [];
+
+            // Seleccionar todas las celdas en el camino
+            const steps = Math.max(Math.abs(deltaX), Math.abs(deltaY));
+            for (let i = 0; i <= steps; i++) {
+                const x = startX + Math.sign(deltaX) * i;
+                const y = startY + Math.sign(deltaY) * i;
+                const nextCell = document.querySelector(`[data-x="${x}"][data-y="${y}"]`);
+                if (nextCell && !nextCell.classList.contains('word-found')) {
+                    nextCell.classList.add('selected');
+                    selectedCells.push(nextCell);
+                }
             }
         }
 
-        const targetDate = new Date(2025, 1, 14).getTime();
-        
-        function updateCountdown() {
-            const now = new Date().getTime();
-            const distance = targetDate - now;
-            
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-            
-            document.getElementById('days').textContent = days.toString().padStart(2, '0');
-            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
-            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
-            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
-        }
+        if (selectedCells.length > 1) checkWord();
+    }
 
-        document.addEventListener('DOMContentLoaded', () => {
-            createHearts(30);
-            updateCountdown();
-            setInterval(updateCountdown, 1000);
+    function checkWord() {
+        const selectedCoords = selectedCells.map(cell => ({
+            x: parseInt(cell.dataset.x),
+            y: parseInt(cell.dataset.y),
+            element: cell
+        }));
+
+        wordDefinitions.forEach(def => {
+            const word = def.word.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toUpperCase();
+            const expectedCoords = [];
+
+            let x = def.x, y = def.y;
+            for (let i = 0; i < word.length; i++) {
+                expectedCoords.push({x, y});
+                switch(def.direction) {
+                    case 'horizontal': x++; break;
+                    case 'vertical': y++; break;
+                    case 'diagonal': x++; y++; break;
+                }
+            }
+
+            // Verificar coincidencia exacta
+            const match = selectedCoords.length === word.length &&
+                selectedCoords.every((coord, index) => 
+                    coord.x === expectedCoords[index].x && 
+                    coord.y === expectedCoords[index].y
+                );
+
+            if (match) {
+                foundWords.add(def.word);
+                selectedCells.forEach(cell => {
+                    cell.classList.add('word-found');
+                    cell.classList.remove('selected');
+                });
+
+                // Actualizar lista
+                const wordList = document.querySelector('.word-list');
+                wordList.innerHTML = wordList.innerHTML.replace(
+                    new RegExp(`\\b${def.word}\\b`, 'gi'),
+                    `<span class="found">${def.word}</span>`
+                );
+
+                alert(`¡Encontraste: ${def.word}! ❤️`);
+            }
         });
-    </script>
+
+        selectedCells.forEach(cell => cell.classList.remove('selected'));
+        selectedCells = [];
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        createHearts(30);
+        updateCountdown();
+        createWordSearch();
+        setInterval(updateCountdown, 1000);
+    });
+</script>
+
 </body>
 </html>
