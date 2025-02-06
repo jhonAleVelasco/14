@@ -406,6 +406,46 @@
             opacity: 0.7;
             transition: opacity 0.3s ease;
         }
+
+        #couponContainer {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(135deg, #fff5f5 0%, #e3f2fd 100%);
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            z-index: 1000;
+            opacity: 1; /* Inicialmente visible */
+            transition: opacity 0.5s ease; /* Transición de opacidad */
+        }
+         
+        .fade-out {
+            opacity: 0; /* Cambia la opacidad a 0 para el efecto de desvanecimiento */
+        }
+
+        .poem-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(139, 0, 0, 0.1);
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: var(--rojo-oscuro);
+        }
+
+        .poem-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: var(--rojo-oscuro);
+        }
     </style>
 </head>
 <body>
@@ -452,13 +492,13 @@
         <div class="special-message">
             Hoy, quiero recordarte que eres tan fuerte y valiente como la raza que nos une: noble como un Terranova, de corazón gigante y lealtad inquebrantable. 🌟<br>
             <br>
-Sé que las olas del trabajo están agitadas y que pronto enfrentarás esos descargos, pero aquí estoy yo, tu compañero fiel, para ser tu puerto seguro. Como los Terranova que rescatan en medio de la tormenta, yo navegaré a tu lado, abrazándote con palabras de aliento y confianza. 🌊🐾<br>
-<br>
-No olvides que, así como estos perros llevan luz en la oscuridad, tú tienes el poder de transformar cualquier desafío en triunfo. Y si algún día sientes que el peso es mucho, recuéstate en mí… porque contigo, soy el humano más afortunado, y juntos somos un equipo imparable. 💪❤️<br>
-<br>
-Pase lo que pase, siempre serás mi heroína de pelaje suave y mi eterna Valentine.<br>
-<br>
-Te amo más que todos los ladridos del mundo. 🐶💘<br>
+            Sé que las olas del trabajo están agitadas y que pronto enfrentarás esos descargos, pero aquí estoy yo, tu compañero fiel, para ser tu puerto seguro. Como los Terranova que rescatan en medio de la tormenta, yo navegaré a tu lado, abrazándote con palabras de aliento y confianza. 🌊🐾<br>
+            <br>
+            No olvides que, así como estos perros llevan luz en la oscuridad, tú tienes el poder de transformar cualquier desafío en triunfo. Y si algún día sientes que el peso es mucho, recuéstate en mí… porque contigo, soy el humano más afortunado, y juntos somos un equipo imparable. 💪❤️<br>
+            <br>
+            Pase lo que pase, siempre serás mi heroína de pelaje suave y mi eterna Valentine.<br>
+            <br>
+            Te amo más que todos los ladridos del mundo. 🐶💘<br>
         </div>
     </div>
 
@@ -468,12 +508,88 @@ Te amo más que todos los ladridos del mundo. 🐶💘<br>
         </h2>
         <div class="word-search-grid" id="wordSearchGrid"></div>
         <div class="word-list">
-            Palabras a encontrar: Terranova, Corazon, 
-            Amor, Cariño, Equipo, Mirada, Abrazo, Promesa, 
-            Lealtad, Nadador, Peludo, Gigante, Palo, Rescate, 
-            Tranquilo, Protector, Ternura, Valentía, Compromiso, 
-            Paciencia, Broma, Aventura, Perdón, Madriguera, Travieso
+            Palabras a encontrar: Terranova, Corazon, Amor, Carino, Equipo, Mirada, Abrazo, Promesa, 
+            Lealtad, Nadador, Peludo, Gigante, Palo, Rescate, Tranquilo, Protector, Ternura, Valentia, 
+            Compromiso, Paciencia, Broma, Aventura, Perdon, Madriguera, Travieso
         </div>
+    </div>
+
+    <div id="couponContainer">
+        <h2 style="color: #d81b60; font-family: 'Pacifico', cursive;">¡Tesoro Descubierto! 🐾💎</h2>
+        
+        <div style="font-size: 1.3rem; margin: 20px 0; color: #2d3436;">
+            <p>Encontraste todas las palabras...<br>¡Como un Terranova encontrando su camino a casa!<br><br></p>
+            
+            <div style="border: 2px dashed #e84393; padding: 15px; margin: 15px 0; border-radius: 10px;">
+                <span style="font-size: 1.8rem; color: #e84393;">⭐ Tu Premio ⭐</span><br>
+                <p style="margin: 10px 0;">"<em>Derecho eterno a:</em><br>
+                - Abrazos de rescate cuando las olas sean altas 🌊<br>
+                - Lamidas de perdón más efectivas que un «lo siento» 🐶<br>
+                - Aventuras donde yo seré tu Transmicable personal 🚡</p>
+            </div>
+
+            <p style="margin-top: 20px;">Cada palabra que encontraste es lo que somos:<br>
+            <strong style="color: #6c5ce7;">Lealtad • Valentía • Ternura • Equipo</strong><br><br>
+            ¿Adivina cuál es la palabra secreta?<br> 
+            <span style="font-size: 2rem; text-shadow: 2px 2px 2px rgba(0,0,0,0.1);">NIBIA</span></p>
+        </div>
+
+        <button id="closeCoupon" style="margin-top: 20px; padding: 10px 25px; background: #ff7675; border: none; border-radius: 25px; color: white; cursor: pointer; transition: 0.3s;">
+            ¡Guardar en el corazón! ❤️
+        </button>
+    </div>
+
+     <!-- Contenedor para el poema -->
+     <div class="poem-container">
+        <h2 class="poem-title">«Nibia: Geografía de un Nombre»</h2>
+        <p>
+            Nibia… tu nombre es un mapa de raíces antiguas,<br>
+            donde la nieve no es fría, sino manto de luna<br>
+            que derrite mis inviernos en ríos de ternura.<br>
+            Eres el valle que calma las tormentas.<br>
+            <br>
+            Tu nombre es agua viva de laguna ancestral,<br>
+            la que guarda en su espejo nuestro "sí" en Guatavita,<br>
+            la que fluye en los picnic de octubre,<br>
+            donde tus palabras fueron semillas de almendra dulce.<br>
+            <br>
+            Nibia es fuerza de montaña recién amanecida:<br>
+            altiva como el Abuelo Cóndor,<br>
+            pero tierna como patas de Terranova<br>
+            pisando hierba con cuidado de cristal.<br>
+            <br>
+            Dicen que tu nombre es "la que rescata",<br>
+            y no es metáfora:<br>
+            cuando el trabajo te exige descargos,<br>
+            cuando la vida gruñe como perro callejero,<br>
+            tú transformas el miedo en puente de cuerdas,<br>
+            y cruzas con la elegancia de quien sabe<br>
+            que las zozobras son solo olas<br>
+            para nadar de pecho.<br>
+            <br>
+            Nibia…<br>
+            Eres el nido que armamos en noviembre,<br>
+            la travesura que desafía estatuas en museos,<br>
+            el faro del Mirador donde juré ser<br>
+            tu motocicleta, tu armadura, tu cómplice.<br>
+            <br>
+            ¿Sabías que en lengua de estrellas,<br>
+            Nibia se escribe con letras de hoguera?<br>
+            Eres la fogata que ahuyenta lobos,<br>
+            la que convierte sopas de letras en promesas,<br>
+            la que me enseñó que "manada"<br>
+            no es un grupo…<br>
+            es un latido compartido.<br>
+            <br>
+            Por eso, desde aquel septiembre<br>
+            donde el destino nos lanzó como dados de luz,<br>
+            juro ser tu Terranova:<br>
+            guardian de tus mañanas en pijama de algodón,<br>
+            perro nadador en tus océanos de dudas,<br>
+            y mudo testigo de cómo tu nombre<br>
+            —sin buscarlo—<br>
+            se volvió sinónimo de "amor que permanece".
+        </p>
     </div>
 
    <script>
@@ -514,18 +630,18 @@ Te amo más que todos los ladridos del mundo. 🐶💘<br>
         { word: 'TERRANOVA', x: 0, y: 0, direction: 'horizontal' },
         { word: 'CORAZON', x: 0, y: 5, direction: 'vertical' },
         { word: 'AMOR', x: 10, y: 3, direction: 'diagonal' },
-        { word: 'CARIÑO', x: 15, y: 0, direction: 'vertical' },
+        { word: 'CARINO', x: 15, y: 0, direction: 'vertical' },
         { word: 'EQUIPO', x: 8, y: 10, direction: 'horizontal' },
         { word: 'MIRADA', x: 2, y: 15, direction: 'horizontal' },
         { word: 'ABRAZO', x: 12, y: 7, direction: 'vertical' },
         { word: 'PROMESA', x: 3, y: 12, direction: 'horizontal' },
-        { word: 'LEALTAD', x: 5, y: 12, direction: 'horizontal' },
+        { word: 'LEALTAD', x: 5, y: 17, direction: 'horizontal' },
         { word: 'NADADOR', x: 18, y: 9, direction: 'vertical' },
         { word: 'PELUDO', x: 14, y: 14, direction: 'horizontal' },
         { word: 'GIGANTE', x: 9, y: 2, direction: 'vertical' },
         { word: 'PALO', x: 17, y: 17, direction: 'horizontal' },
         { word: 'RESCATE', x: 1, y: 10, direction: 'horizontal' },
-        { word: 'TRANQUILO', x: 0, y: 13, direction: 'vertical' },
+        { word: 'TRANQUILO', x: 0, y: 18, direction: 'vertical' },
         { word: 'PROTECTOR', x: 11, y: 0, direction: 'horizontal' },
         { word: 'TERNURA', x: 6, y: 6, direction: 'horizontal' },
         { word: 'VALENTIA', x: 13, y: 5, direction: 'vertical' },
@@ -546,16 +662,43 @@ Te amo más que todos los ladridos del mundo. 🐶💘<br>
         // Insertar palabras en el grid
         wordDefinitions.forEach(def => {
             const word = def.word.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toUpperCase();
-            let x = def.x, y = def.y;
+            let placed = false;
 
-            for (let i = 0; i < word.length; i++) {
-                if (x < gridSize && y < gridSize) {
-                    wordGrid[y][x] = word[i];
-                    switch(def.direction) {
-                        case 'horizontal': x++; break;
-                        case 'vertical': y++; break;
-                        case 'diagonal': x++; y++; break;
+            while (!placed) {
+                let x = Math.floor(Math.random() * gridSize);
+                let y = Math.floor(Math.random() * gridSize);
+                let direction = Math.floor(Math.random() * 3); // 0: horizontal, 1: vertical, 2: diagonal
+
+                // Verificar si la palabra cabe en la dirección seleccionada
+                let canPlace = true;
+                for (let i = 0; i < word.length; i++) {
+                    let newX = x;
+                    let newY = y;
+
+                    if (direction === 0) newX += i; // horizontal
+                    else if (direction === 1) newY += i; // vertical
+                    else if (direction === 2) { newX += i; newY += i; } // diagonal
+
+                    // Verificar límites
+                    if (newX >= gridSize || newY >= gridSize || wordGrid[newY][newX] !== null) {
+                        canPlace = false;
+                        break;
                     }
+                }
+
+                // Si se puede colocar, colocar la palabra
+                if (canPlace) {
+                    for (let i = 0; i < word.length; i++) {
+                        let newX = x;
+                        let newY = y;
+
+                        if (direction === 0) newX += i; // horizontal
+                        else if (direction === 1) newY += i; // vertical
+                        else if (direction === 2) { newX += i; newY += i; } // diagonal
+
+                        wordGrid[newY][newX] = word[i];
+                    }
+                    placed = true; // La palabra se ha colocado
                 }
             }
         });
@@ -578,14 +721,11 @@ Te amo más que todos los ladridos del mundo. 🐶💘<br>
         if (cell.classList.contains('word-found')) return;
 
         if (selectedCells.length === 0) {
-            // Primera selección
             cell.classList.add('selected');
             selectedCells.push(cell);
         } else {
-            // Selección continua
             const first = selectedCells[0];
             const last = cell;
-
             const startX = parseInt(first.dataset.x);
             const startY = parseInt(first.dataset.y);
             const endX = parseInt(last.dataset.x);
@@ -594,13 +734,11 @@ Te amo más que todos los ladridos del mundo. 🐶💘<br>
             const deltaX = endX - startX;
             const deltaY = endY - startY;
             const direction = Math.abs(deltaX) === Math.abs(deltaY) ? 'diagonal' :
-                                deltaY === 0 ? 'horizontal' : 'vertical';
+                              deltaY === 0 ? 'horizontal' : 'vertical';
 
-            // Limpiar selección anterior
             selectedCells.forEach(c => c.classList.remove('selected'));
             selectedCells = [];
 
-            // Seleccionar todas las celdas en el camino
             const steps = Math.max(Math.abs(deltaX), Math.abs(deltaY));
             for (let i = 0; i <= steps; i++) {
                 const x = startX + Math.sign(deltaX) * i;
@@ -611,47 +749,25 @@ Te amo más que todos los ladridos del mundo. 🐶💘<br>
                     selectedCells.push(nextCell);
                 }
             }
+            checkWord();
         }
-
-        if (selectedCells.length > 1) checkWord();
     }
 
     function checkWord() {
-        const selectedCoords = selectedCells.map(cell => ({
-            x: parseInt(cell.dataset.x),
-            y: parseInt(cell.dataset.y),
-            element: cell
-        }));
+        let found = false;
+        const selectedWord = selectedCells.map(cell => cell.textContent).join('');
 
         wordDefinitions.forEach(def => {
             const word = def.word.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toUpperCase();
-            const expectedCoords = [];
-
-            let x = def.x, y = def.y;
-            for (let i = 0; i < word.length; i++) {
-                expectedCoords.push({x, y});
-                switch(def.direction) {
-                    case 'horizontal': x++; break;
-                    case 'vertical': y++; break;
-                    case 'diagonal': x++; y++; break;
-                }
-            }
-
-            // Verificar coincidencia exacta
-            const match = selectedCoords.length === word.length &&
-                selectedCoords.every((coord, index) => 
-                    coord.x === expectedCoords[index].x && 
-                    coord.y === expectedCoords[index].y
-                );
-
-            if (match) {
-                foundWords.add(def.word);
+            
+            if (selectedWord === word && !foundWords.has(word)) {
+                found = true;
+                foundWords.add(word);
                 selectedCells.forEach(cell => {
                     cell.classList.add('word-found');
                     cell.classList.remove('selected');
                 });
 
-                // Actualizar lista
                 const wordList = document.querySelector('.word-list');
                 wordList.innerHTML = wordList.innerHTML.replace(
                     new RegExp(`\\b${def.word}\\b`, 'gi'),
@@ -662,8 +778,19 @@ Te amo más que todos los ladridos del mundo. 🐶💘<br>
             }
         });
 
-        selectedCells.forEach(cell => cell.classList.remove('selected'));
-        selectedCells = [];
+        // Verificar si se encontraron todas las palabras
+        checkAllWordsFound();
+
+        if (!found) {
+            selectedCells.forEach(cell => cell.classList.remove('selected'));
+            selectedCells = [];
+        }
+    }
+
+    function checkAllWordsFound() {
+        if (foundWords.size === wordDefinitions.length) {
+            document.getElementById('couponContainer').style.display = 'block';
+        }
     }
 
     document.addEventListener('DOMContentLoaded', () => {
@@ -672,7 +799,16 @@ Te amo más que todos los ladridos del mundo. 🐶💘<br>
         createWordSearch();
         setInterval(updateCountdown, 1000);
     });
-</script>
 
+    document.getElementById('closeCoupon').addEventListener('click', function() {
+        const couponContainer = document.getElementById('couponContainer');
+        couponContainer.classList.add('fade-out'); // Agregar clase para desvanecimiento
+
+        // Esperar a que termine la transición antes de ocultar el contenedor
+        setTimeout(() => {
+            couponContainer.style.display = 'none'; // Ocultar el contenedor
+        }, 500); // Tiempo de espera igual al tiempo de la transición
+    });
+</script>
 </body>
 </html>
