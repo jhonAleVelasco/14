@@ -446,6 +446,255 @@
             margin-bottom: 1rem;
             color: var(--rojo-oscuro);
         }
+
+        .pixel-art-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(139, 0, 0, 0.1);
+        }
+        
+        .pixel-grid {
+            display: grid;
+            grid-template-columns: repeat(30, 20px);
+            gap: 1px;
+            background: var(--trigo);
+            padding: 10px;
+            border: 2px solid var(--rojo-oscuro);
+            margin: 1rem 0;
+        }
+        
+        .pixel {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: 1px solid rgba(139, 0, 0, 0.1);
+        }
+        
+        .pixel:hover {
+            transform: scale(1.1);
+            z-index: 2;
+        }
+        
+        .color-palette {
+            display: flex;
+            gap: 5px;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .color-option {
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+        
+        .color-option.selected {
+            border-color: var(--rojo-oscuro);
+            transform: scale(1.1);
+        }
+        
+        .controls {
+            text-align: center;
+            margin-top: 1rem;
+        }
+        
+        button {
+            background: var(--rosa-claro);
+            border: 2px solid var(--rojo-oscuro);
+            padding: 8px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        button:hover {
+            background: var(--rojo-oscuro);
+            color: white;
+        }
+
+        /* Nuevos estilos agregados */
+.reference-container {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+    margin-bottom: 2rem;
+}
+
+.reference-image {
+    max-width: 300px;
+    border-radius: 15px;
+    border: 3px solid var(--rojo-oscuro);
+    box-shadow: 0 8px 20px rgba(139, 0, 0, 0.2);
+}
+
+.color-palette {
+    /* Ajuste para más colores */
+    grid-template-columns: repeat(auto-fit, minmax(40px, 1fr));
+}
+
+/* ESTILOS ACTUALIZADOS */
+.song-container {
+    max-width: 800px; /* Ancho máximo de la caja de la canción */
+    margin: 3rem auto; /* Centrado en la página */
+    padding: 30px; /* Espaciado interno */
+    background: rgba(255, 255, 255, 0.95); /* Fondo blanco semitransparente */
+    border-radius: 20px; /* Bordes redondeados */
+    box-shadow: 0 10px 40px rgba(139, 0, 0, 0.15); /* Sombra para profundidad */
+}
+
+/* VIDEO - Tamaño fijo responsive */
+
+
+/* LETRAS - Altura fija con scroll suave */
+.lyrics-container {
+    height: 250px; /* Altura fija */
+    padding: 20px; /* Espaciado interno */
+    margin: 2rem 0; /* Margen superior e inferior */
+    background: rgba(245, 222, 179, 0.25); /* Fondo semitransparente */
+    border-radius: 15px; /* Bordes redondeados */
+    border-left: 5px solid var(--rojo-oscuro); /* Borde izquierdo */
+    font-size: 1.5rem; /* Tamaño de fuente */
+    line-height: 1.6; /* Altura de línea */
+    text-align: center; /* Centrado del texto */
+    overflow-y: auto; /* Scroll vertical si es necesario */
+    scrollbar-width: thin; /* Scrollbar delgada */
+    scrollbar-color: var(--rojo-oscuro) transparent; /* Color del scrollbar */
+}
+
+/* Estilos del scrollbar */
+.lyrics-container::-webkit-scrollbar {
+    width: 8px; /* Ancho del scrollbar */
+}
+
+.lyrics-container::-webkit-scrollbar-track {
+    background: transparent; /* Fondo del track */
+}
+
+.lyrics-container::-webkit-scrollbar-thumb {
+    background-color: var(--rojo-oscuro); /* Color del thumb */
+    border-radius: 10px; /* Bordes redondeados */
+}
+
+.current-lyric {
+    color: var(--rojo-oscuro); /* Color del texto */
+    font-weight: 600; /* Peso de la fuente */
+    font-size: 1.8rem; /* Tamaño de fuente */
+    min-height: 80px; /* Altura mínima */
+    display: flex; /* Flexbox para centrar */
+    align-items: center; /* Alinear verticalmente */
+    justify-content: center; /* Alinear horizontalmente */
+    padding: 15px 20px; /* Espaciado interno */
+    margin: 10px 0; /* Margen superior e inferior */
+    animation: lyricFade 0.8s ease; /* Animación de aparición */
+    white-space: pre-wrap; /* Mantener saltos de línea */
+    word-break: keep-all; /* Evitar separación de palabras */
+    line-height: 1.4; /* Altura de línea */
+    border: 2px solid rgba(139, 0, 0, 0.1); /* Borde sutil */
+    border-radius: 10px; /* Bordes redondeados */
+    background: rgba(255, 255, 255, 0.9); /* Fondo blanco semitransparente */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Sombra sutil */
+}
+
+/* Animación de las letras */
+@keyframes lyricFade {
+    0% {
+        opacity: 0;
+        transform: translateY(15px) scale(0.98);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+
+.castle-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.castle {
+    position: relative;
+    width: 200px;
+    height: 150px;
+    background-color: #8B4513; /* Color marrón */
+    border: 5px solid #000;
+    border-bottom: 0;
+}
+
+.tower {
+    position: absolute;
+    width: 50px;
+    height: 100px;
+    background-color: #8B4513;
+    border: 5px solid #000;
+    top: -100px;
+}
+
+.tower.left {
+    left: -25px;
+}
+
+.tower.right {
+    right: -25px;
+}
+
+.roof {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 75px solid transparent;
+    border-right: 75px solid transparent;
+    border-bottom: 50px solid #A52A2A; /* Color rojo oscuro */
+    top: -50px;
+    left: 50px;
+}
+
+.spaceship-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.spaceship {
+    position: relative;
+    width: 100px;
+    height: 200px;
+    background-color: #FF69B4; /* Color rosa */
+    border-radius: 50px 50px 0 0;
+    overflow: hidden;
+}
+
+.nose {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    border-bottom: 30px solid #FF1493; /* Color rosa más oscuro */
+    top: -30px;
+    left: 0;
+}
+
+.window {
+    position: absolute;
+    width: 40px;
+    height: 20px;
+    background-color: #FFFFFF; /* Ventana blanca */
+    border-radius: 10px;
+    top: 30px;
+    left: 30px;
+}
+
+
     </style>
 </head>
 <body>
@@ -594,7 +843,54 @@
 
     <iframe width="560" height="315" src="https://www.youtube.com/embed/1vaM2C1hIek" 
     title="YouTube video player" frameborder="0" allowfullscreen></iframe>
-   <script>
+    
+    <div class="pixel-art-container">
+        <h2 style="font-family: 'Great Vibes', cursive; color: var(--rojo-oscuro); text-align: center;">
+            Pixel Art Terranova 🎨
+        </h2>
+        
+        <div class="reference-container">
+            <div class="pixel-grid" id="pixelGrid"></div>
+            <img src="image.png" alt="Referencia Terranova" class="reference-image">
+        </div>
+        
+        <div class="color-palette" id="colorPalette"></div>
+        
+        <div class="controls">
+            <button onclick="resetArt()">Reiniciar Dibujo</button>
+        </div>
+    </div>
+  <!-- SECCIÓN DE LA CANCIÓN -->
+<div class="song-container">
+    <h2 style="font-family: 'Great Vibes', cursive; color: var(--rojo-oscuro); text-align: center; margin-bottom: 1rem;">
+        Nuestra Canción: "Si Nos Dejan" 
+        </h2>
+    
+    <!-- Reproductor de YouTube -->
+    <div class="video-wrapper">
+        <iframe 
+            id="songVideo"
+            width="560" 
+            height="315" 
+            src="https://www.youtube.com/embed/dGWo7L5sfnY?enablejsapi=1&start=17" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen>
+        </iframe>
+    </div>
+
+ 
+</div>
+
+        <div class="lyrics-container" id="lyricsBox">
+            <div class="current-lyric">🎶 Presiona play para comenzar 🐾</div>
+        </div>
+
+
+
+        
+        
+    <script>
     function createHearts(num) {
         const container = document.getElementById('heartsContainer');
         container.innerHTML = '';
@@ -811,6 +1107,226 @@
             couponContainer.style.display = 'none'; // Ocultar el contenedor
         }, 500); // Tiempo de espera igual al tiempo de la transición
     });
+
+    const colors = [   // ROSA
+    '#8B0000',   // 0 - Rojo oscuro
+    '#654321',   // 1 - Marrón oscuro
+    '#A0522D',   // 2 - Marrón medio
+    '#DEB887',   // 3 - Marrón claro
+    '#FFFFFF',   // 4 - Blanco
+    '#D3D3D3',   // 5 - Gris claro
+    '#808080',   // 6 - Gris medio
+    '#696969',   // 7 - Gris oscuro
+    '#2F4F4F',   // 8 - Gris pizarra (slate)
+    '#000000',
+    '#FDA4BA'    // 9 - Negro
+];
+
+let selectedColor = colors[0];
+let isMouseDown = false;
+
+// Diseño inicial del Terranova (30x30)
+const initialPixelArt = [
+    [4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,],
+    [4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,],
+    [4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,],
+    [4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,],
+    [4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,],
+    [4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,],
+    [4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,],
+    [4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,],
+    [4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,],
+    [4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,],
+    [4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,],
+    [4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,],
+    [4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,],
+    [4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,],
+    [4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,],
+    [4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,],
+    [4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,],
+    [4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,],
+    [4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,],
+    [4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,],
+    [4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,],
+    [4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,],
+    [4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,],
+    [4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,],
+    [4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,],
+    [4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,],
+    [4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,],
+    [4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,],
+    [4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,],
+    [4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,],
+    // ... (agregar todas las filas necesarias para formar el perro)
+    // (Por espacio, aquí va una versión simplificada, deberías crear el diseño completo)
+];
+
+function createPixelArt() {
+    const grid = document.getElementById('pixelGrid');
+    const palette = document.getElementById('colorPalette');
+    
+    // Crear paleta de colores
+    colors.forEach(color => {
+        const div = document.createElement('div');
+        div.className = 'color-option';
+        div.style.backgroundColor = color;
+        div.addEventListener('click', () => {
+            document.querySelectorAll('.color-option').forEach(opt => opt.classList.remove('selected'));
+            div.classList.add('selected');
+            selectedColor = color;
+        });
+        palette.appendChild(div);
+    });
+
+    // Crear grid de píxeles
+    initialPixelArt.forEach((row, y) => {
+        row.forEach((colorIndex, x) => {
+            const pixel = document.createElement('div');
+            pixel.className = 'pixel';
+            pixel.style.backgroundColor = colors[colorIndex];
+            
+            pixel.addEventListener('mousedown', (e) => {
+                isMouseDown = true;
+                paintPixel(pixel);
+            });
+            
+            pixel.addEventListener('mouseenter', () => {
+                if(isMouseDown) paintPixel(pixel);
+            });
+            
+            grid.appendChild(pixel);
+        });
+    });
+}
+
+function paintPixel(pixel) {
+    pixel.style.backgroundColor = selectedColor;
+    pixel.style.animation = 'paintEffect 0.3s';
+}
+
+function resetArt() {
+    document.querySelectorAll('.pixel').forEach((pixel, index) => {
+        const x = index % 30;
+        const y = Math.floor(index / 30);
+        pixel.style.backgroundColor = colors[initialPixelArt[y][x]];
+    });
+}
+
+// Manejar eventos del mouse
+document.addEventListener('mouseup', () => isMouseDown = false);
+document.addEventListener('mouseleave', () => isMouseDown = false);
+
+// Animación
+const style = document.createElement('style');
+style.textContent = `
+@keyframes paintEffect {
+    0% { transform: scale(1); }
+    50% { transform: scale(0.9); }
+    100% { transform: scale(1); }
+}`;
+document.head.appendChild(style);
+
+document.addEventListener('DOMContentLoaded', createPixelArt);
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// CONFIGURACIÓN DE LETRA PRECISA (AJUSTAR TIEMPOS)
+
+const lyrics = [
+{ time: 9, text: "Si nos dejan..." },
+{ time: 11, text: "Nos vamos a querer toda la vida..." },
+{ time: 17, text: "Si nos dejan..." },
+{ time: 20, text: "Nos vamos a vivir a un mundo nuevo..." },
+{ time: 27, text: "Yo creo podemos ver el nuevo amanecer..." },
+{ time: 31, text: "De un nuevo día..." },
+{ time: 36, text: "Yo pienso que tú y yo..." },
+{ time: 38, text: "Podemos ser felices, todavía..." },
+{ time: 45, text: "Si nos dejan..." },
+{ time: 47, text: "Buscamos un rincón cerca del cielo..." },
+{ time: 54, text: "Si nos dejan..." },
+{ time: 56, text: "Hacemos con las nubes terciopelo..." },
+{ time: 63, text: "Y, ahí, juntitos los dos, cerquita de Dios..." },
+{ time: 69, text: "Será lo que soñamos..." },
+{ time: 74, text: "Si nos dejan, te llevo de la mano, corazón..." },
+{ time: 81, text: "Y ahí nos vamos..." },
+{ time: 83, text: "Si nos dejan..." },
+{ time: 85, text: "De todo lo demás nos olvidamos..." },
+{ time: 92, text: "Si nos dejan..." },
+{ time: 96, text: "Si nos dejan..." },
+{ time: 99, text: "TE AMO MI NIÑA HERMOSA <3."}
+];
+// VARIABLES DE CONTROL
+let player;
+let currentLineIndex = -1;
+let isLyricsActive = false;
+let checkInterval;
+
+// INICIALIZACIÓN DEL REPRODUCTOR
+function onYouTubeIframeAPIReady() {
+    player = new YT.Player('songVideo', {
+        events: {
+            'onReady': onPlayerReady,
+            'onStateChange': onPlayerStateChange
+        }
+    });
+}
+
+function onPlayerReady(event) {
+    document.querySelector('.lyrics-container').style.opacity = 1;
+}
+
+function onPlayerStateChange(event) {
+    if (event.data === YT.PlayerState.PLAYING) {
+        isLyricsActive = true;
+        startLyricsTracking();
+    } else {
+        isLyricsActive = false;
+    }
+}
+
+// SEGUIMIENTO DE LA LETRA
+function startLyricsTracking() {
+    checkInterval = setInterval(() => {
+        if (!isLyricsActive) return;
+        
+        const currentTime = player.getCurrentTime();
+        const newLineIndex = findCurrentLineIndex(currentTime);
+        
+        if (newLineIndex !== currentLineIndex) {
+            currentLineIndex = newLineIndex;
+            updateLyricDisplay();
+        }
+    }, 100);
+}
+
+function findCurrentLineIndex(currentTime) {
+    for (let i = lyrics.length - 1; i >= 0; i--) {
+        if (currentTime >= lyrics[i].time) return i;
+    }
+    return -1;
+}
+
+function updateLyricDisplay() {
+    const lyricElement = document.querySelector('.current-lyric');
+    
+    if (currentLineIndex === -1) {
+        lyricElement.innerHTML = "🎶 Preparando la música... 🐾";
+        return;
+    }
+    
+    lyricElement.innerHTML = `<span class="lyric-highlight">${lyrics[currentLineIndex].text}</span>`;
+    
+    // Efecto visual
+    lyricElement.style.animation = 'none';
+    lyricElement.offsetHeight; // Trigger reflow
+    lyricElement.style.animation = 'lyricSlide 0.8s ease';
+}
+
+// CARGAR API DE YOUTUBE
+const tag = document.createElement('script');
+tag.src = "https://www.youtube.com/iframe_api";
+document.head.appendChild(tag);
+
 </script>
 </body>
 </html>
