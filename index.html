@@ -1162,6 +1162,245 @@
     background: #FFD700;
     transform: scale(1.05);
 }
+
+
+
+
+/* Estilos del juego */
+.puppy-game {
+    padding: 2rem;
+    background: #fff5f8;
+    border-radius: 20px;
+    margin: 2rem auto;
+    max-width: 800px;
+    box-shadow: 0 10px 30px rgba(139, 0, 0, 0.1);
+}
+
+.puppy-container {
+    position: relative;
+    height: 300px;
+    margin: 2rem 0;
+}
+
+.puppy {
+    width: 200px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.puppy:hover {
+    transform: translateX(-50%) scale(1.05);
+}
+
+.status-bar {
+    margin: 1rem 0;
+    background: rgba(139, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 0.5rem;
+}
+
+.bar {
+    height: 15px;
+    border-radius: 8px;
+    margin-top: 0.5rem;
+    transition: width 0.5s ease;
+}
+
+.hunger .bar { background: #ff6b6b; width: 100%; }
+.happiness .bar { background: #ff9ff3; width: 100%; }
+.energy .bar { background: #feca57; width: 100%; }
+
+.actions {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.btn-action {
+    background: #8B0000;
+    color: white;
+    border: none;
+    padding: 1rem;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-action:hover {
+    background: #ff6b6b;
+    transform: translateY(-3px);
+}
+
+.game-messages {
+    min-height: 60px;
+    margin-top: 1rem;
+    padding: 1rem;
+    border-radius: 10px;
+    background: rgba(255, 182, 193, 0.2);
+}
+
+/* Animaciones del cachorro */
+.floating-heart {
+    position: absolute;
+    animation: floatUp 2s ease-out;
+    font-size: 1.5rem;
+}
+
+@keyframes floatUp {
+    0% { transform: translateY(0); opacity: 1; }
+    100% { transform: translateY(-100px); opacity: 0; }
+}
+
+.jump { animation: puppyJump 0.5s; }
+@keyframes puppyJump {
+    0%, 100% { transform: translateY(0) translateX(-50%); }
+    50% { transform: translateY(-30px) translateX(-50%); }
+}
+
+.spin { animation: puppySpin 1s; }
+@keyframes puppySpin {
+    100% { transform: translateX(-50%) rotate(360deg); }
+}
+
+.shake { animation: puppyShake 0.5s; }
+@keyframes puppyShake {
+    0%, 100% { transform: translateX(-50%); }
+    25% { transform: translateX(-55%); }
+    75% { transform: translateX(-45%); }
+}
+
+.sleep { animation: puppySleep 2s infinite; }
+@keyframes puppySleep {
+    50% { transform: translateX(-50%) scaleY(0.95); }
+}
+
+.happy { animation: puppyHappy 1s; }
+@keyframes puppyHappy {
+    50% { transform: translateX(-50%) scale(1.1); }
+}
+/* /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+
+
+/* Estilos del juego */
+.puppy-game {
+    padding: 2rem;
+    background: #fff5f8;
+    border-radius: 20px;
+    margin: 2rem auto;
+    max-width: 800px;
+    box-shadow: 0 10px 30px rgba(139, 0, 0, 0.1);
+}
+
+.puppy-container {
+    position: relative;
+    height: 300px;
+    margin: 2rem 0;
+}
+
+.puppy {
+    width: 200px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.puppy:hover {
+    transform: translateX(-50%) scale(1.05);
+}
+
+.status-bar {
+    margin: 1rem 0;
+    background: rgba(139, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 0.5rem;
+}
+
+.bar {
+    height: 15px;
+    border-radius: 8px;
+    margin-top: 0.5rem;
+    transition: width 0.5s ease;
+}
+
+.hunger .bar { background: #ff6b6b; width: 100%; }
+.happiness .bar { background: #ff9ff3; width: 100%; }
+.energy .bar { background: #feca57; width: 100%; }
+
+.actions {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.btn-action {
+    background: #8B0000;
+    color: white;
+    border: none;
+    padding: 1rem;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-action:hover {
+    background: #ff6b6b;
+    transform: translateY(-3px);
+}
+
+.game-messages {
+    min-height: 60px;
+    margin-top: 1rem;
+    padding: 1rem;
+    border-radius: 10px;
+    background: rgba(255, 182, 193, 0.2);
+}
+
+/* Animaciones del cachorro */
+.floating-heart {
+    position: absolute;
+    animation: floatUp 2s ease-out;
+    font-size: 1.5rem;
+}
+
+@keyframes floatUp {
+    0% { transform: translateY(0); opacity: 1; }
+    100% { transform: translateY(-100px); opacity: 0; }
+}
+
+.jump { animation: puppyJump 0.5s; }
+@keyframes puppyJump {
+    0%, 100% { transform: translateY(0) translateX(-50%); }
+    50% { transform: translateY(-30px) translateX(-50%); }
+}
+
+.spin { animation: puppySpin 1s; }
+@keyframes puppySpin {
+    100% { transform: translateX(-50%) rotate(360deg); }
+}
+
+.shake { animation: puppyShake 0.5s; }
+@keyframes puppyShake {
+    0%, 100% { transform: translateX(-50%); }
+    25% { transform: translateX(-55%); }
+    75% { transform: translateX(-45%); }
+}
+
+.sleep { animation: puppySleep 2s infinite; }
+@keyframes puppySleep {
+    50% { transform: translateX(-50%) scaleY(0.95); }
+}
+
+.happy { animation: puppyHappy 1s; }
+@keyframes puppyHappy {
+    50% { transform: translateX(-50%) scale(1.1); }
+}
     </style>
     
 
@@ -1462,6 +1701,7 @@ entre catapultas y curvaturas espaciotemporales.<br>
     </div>
         
 
+    
     <!-- Modal -->
     <div id="emmaModal" class="emma-modal">
         <div class="modal-content">
@@ -1478,7 +1718,47 @@ entre catapultas y curvaturas espaciotemporales.<br>
         </div>
     </div>
 
-
+    <section class="puppy-game">
+        <div class="game-container">
+            <h2 style="font-family: 'Great Vibes', cursive; color: var(--rojo-oscuro); text-align: center; margin-bottom: 2rem;">
+                🐾 Cachorro Terranova Virtual 🦴
+            </h2>
+            
+            <!-- Estado del cachorro -->
+            <div class="puppy-status">
+                <div class="status-bar hunger">
+                    <span>🍖 Hambre: <span id="hungerValue">100</span>%</span>
+                    <div class="bar"></div>
+                </div>
+                <div class="status-bar happiness">
+                    <span>🎈 Felicidad: <span id="happinessValue">100</span>%</span>
+                    <div class="bar"></div>
+                </div>
+                <div class="status-bar energy">
+                    <span>⚡ Energía: <span id="energyValue">100</span>%</span>
+                    <div class="bar"></div>
+                </div>
+            </div>
+    
+            <!-- Cachorro interactivo -->
+            <div class="puppy-container">
+                <img src="terranovabb.png" alt="Cachorro Terranova" 
+                     class="puppy" id="puppy">
+                <div class="hearts-emitter"></div>
+            </div>
+    
+            <!-- Acciones -->
+            <div class="actions">
+                <button class="btn-action" id="feed">Alimentar</button>
+                <button class="btn-action" id="play">Jugar</button>
+                <button class="btn-action" id="clean">Bañar</button>
+                <button class="btn-action" id="rest">Descansar</button>
+            </div>
+    
+            <!-- Mensajes del juego -->
+            <div class="game-messages" id="gameMessages"></div>
+        </div>
+    </section>
     
     <script>
     function createHearts(num) {
@@ -1962,6 +2242,146 @@ document.head.appendChild(tag);
                closeModal();
            }
        }
+
+
+
+       // /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+       class VirtualPuppy {
+        constructor() {
+            this.hunger = 100;
+            this.happiness = 100;
+            this.energy = 100;
+            this.isSleeping = false;
+            this.interval = null;
+            
+            this.init();
+        }
+    
+        init() {
+            // Event listeners para botones
+            document.getElementById('feed').addEventListener('click', () => this.feed());
+            document.getElementById('play').addEventListener('click', () => this.play());
+            document.getElementById('clean').addEventListener('click', () => this.clean());
+            document.getElementById('rest').addEventListener('click', () => this.toggleSleep());
+            
+            // Click en el cachorro
+            document.getElementById('puppy').addEventListener('click', () => this.pet());
+            
+            // Sistema de degradación
+            this.interval = setInterval(() => this.degradeStats(), 30000);
+        }
+    
+        degradeStats() {
+            if(!this.isSleeping) {
+                this.hunger = Math.max(0, this.hunger - 5);
+                this.happiness = Math.max(0, this.happiness - 3);
+                this.energy = Math.max(0, this.energy - 2);
+                this.updateDisplay();
+                this.checkStatus();
+            }
+        }
+    
+        feed() {
+            if(this.hunger < 100) {
+                this.hunger = Math.min(100, this.hunger + 20);
+                this.happiness += 5;
+                this.showMessage('¡Ñam ñam! Gracias por la comida 🦴', '#ff6b6b');
+                this.createHearts(3);
+                this.animatePuppy('jump');
+            }
+        }
+    
+        play() {
+            if(this.energy > 20) {
+                this.happiness = Math.min(100, this.happiness + 15);
+                this.energy -= 15;
+                this.showMessage('¡Woof! ¡Eso fue divertido! 🎾', '#ff9ff3');
+                this.createHearts(5);
+                this.animatePuppy('spin');
+            }
+        }
+    
+        clean() {
+            this.happiness += 10;
+            this.showMessage('¡Brrr! Me encanta estar limpio 🛁', '#48dbfb');
+            this.animatePuppy('shake');
+        }
+    
+        toggleSleep() {
+            this.isSleeping = !this.isSleeping;
+            if(this.isSleeping) {
+                this.energy = Math.min(100, this.energy + 30);
+                this.showMessage('Zzzz... (¡Estoy descansando!) 🌙', '#54a0ff');
+                this.animatePuppy('sleep');
+            }
+        }
+    
+        pet() {
+            this.happiness = Math.min(100, this.happiness + 10);
+            this.showMessage('¡Guau! Me encantan las caricias 🐾', '#ff9ff3');
+            this.createHearts(2);
+            this.animatePuppy('happy');
+        }
+    
+        animatePuppy(animation) {
+            const puppy = document.getElementById('puppy');
+            puppy.classList.add(animation);
+            setTimeout(() => puppy.classList.remove(animation), 1000);
+        }
+    
+        createHearts(count) {
+            const container = document.querySelector('.hearts-emitter');
+            for(let i = 0; i < count; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'floating-heart';
+                heart.style.left = `${Math.random() * 100}%`;
+                heart.style.animationDelay = `${i * 0.2}s`;
+                container.appendChild(heart);
+                
+                setTimeout(() => heart.remove(), 2000);
+            }
+        }
+    
+        showMessage(text, color) {
+            const messages = document.getElementById('gameMessages');
+            const message = document.createElement('div');
+            message.textContent = text;
+            message.style.color = color;
+            messages.appendChild(message);
+            
+            setTimeout(() => message.remove(), 3000);
+        }
+    
+        checkStatus() {
+            if(this.hunger <= 20) {
+                this.showMessage('¡Tengo mucha hambre! 🥺', '#ff6b6b');
+            }
+            if(this.happiness <= 30) {
+                this.showMessage('¿Ya no me quieres? 😢', '#ff9ff3');
+            }
+            if(this.energy <= 10) {
+                this.showMessage('Estoy muy cansado... 😴', '#54a0ff');
+            }
+        }
+    
+        updateDisplay() {
+            document.getElementById('hungerValue').textContent = this.hunger;
+            document.querySelector('.hunger .bar').style.width = `${this.hunger}%`;
+            
+            document.getElementById('happinessValue').textContent = this.happiness;
+            document.querySelector('.happiness .bar').style.width = `${this.happiness}%`;
+            
+            document.getElementById('energyValue').textContent = this.energy;
+            document.querySelector('.energy .bar').style.width = `${this.energy}%`;
+        }
+    }
+    
+    // Inicializar el juego cuando el DOM esté listo
+    document.addEventListener('DOMContentLoaded', () => {
+        const puppyGame = new VirtualPuppy();
+    });
+
 </script>
 </body>
 </html>
