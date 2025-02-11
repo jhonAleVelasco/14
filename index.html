@@ -1091,8 +1091,80 @@
     transition: all 0.3s ease;
 }
 
+/* /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
+   /* Estilos del modal mejorados */
+   .emma-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background: #fff;
+    padding: 25px;
+    border-radius: 20px;
+    text-align: center;
+    width: 90%;
+    max-width: 800px;
+    box-shadow: 0 0 30px rgba(139, 0, 0, 0.3);
+}
+
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%; /* Relación 16:9 */
+    height: 0;
+    overflow: hidden;
+    margin: 15px 0;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.secret-message {
+    font-family: 'Great Vibes', cursive;
+    font-size: 2.5em;
+    color: #8B0000;
+    margin: 20px 0;
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
+}
+
+.close-btn {
+    background: #8B0000;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 1.2em;
+    margin-top: 20px;
+    transition: all 0.3s ease;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.close-btn:hover {
+    background: #FFD700;
+    transform: scale(1.05);
+}
     </style>
+    
+
 </head>
 <body>
     <div class="hearts-container" id="heartsContainer"></div>
@@ -1389,6 +1461,25 @@ entre catapultas y curvaturas espaciotemporales.<br>
 </p>
     </div>
         
+
+    <!-- Modal -->
+    <div id="emmaModal" class="emma-modal">
+        <div class="modal-content">
+            <div class="video-container">
+                <!-- Video específico - Cambiar ID del video -->
+                <iframe id="secretVideo" 
+                src="https://www.youtube.com/embed/4hpPE6wLBng?autoplay=1&mute=1" 
+                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+        </iframe>
+            </div>
+            <p class="secret-message">Para mi compañera de vida 💖<br>¡Te amo con todo mi ser!</p>
+            <button class="close-btn" onclick="closeModal()">Volver a Nuestro Mundo</button>
+        </div>
+    </div>
+
+
+    
     <script>
     function createHearts(num) {
         const container = document.getElementById('heartsContainer');
@@ -1826,6 +1917,51 @@ const tag = document.createElement('script');
 tag.src = "https://www.youtube.com/iframe_api";
 document.head.appendChild(tag);
 
+       // Código secreto "EMMA"
+       const secretCode = ['E','M','M','A'];
+       let inputSequence = [];
+       let modalActivated = false;
+
+       document.addEventListener('keyup', (e) => {
+           if(modalActivated) return;
+           
+           inputSequence.push(e.key.toUpperCase());
+           if(inputSequence.length > secretCode.length) {
+               inputSequence.shift();
+           }
+           
+           if(inputSequence.join('') === secretCode.join('')) {
+               showModal();
+           }
+       });
+
+       function showModal() {
+        modalActivated = true;
+        const modal = document.getElementById('emmaModal');
+        modal.style.display = 'flex';
+        
+        // URL corregida con parámetros de autoplay
+        const iframe = document.getElementById('secretVideo');
+        iframe.src = "https://www.youtube.com/embed/4hpPE6wLBng?autoplay=1&mute=1&rel=0&modestbranding=1";
+    }
+
+       function closeModal() {
+           const modal = document.getElementById('emmaModal');
+           modal.style.display = 'none';
+           modalActivated = false;
+           
+           // Restablecer video
+           const iframe = document.getElementById('secretVideo');
+           iframe.src = iframe.src.replace("&autoplay=1", "");
+       }
+
+       // Cerrar al hacer click fuera del modal
+       window.onclick = function(event) {
+           const modal = document.getElementById('emmaModal');
+           if(event.target === modal) {
+               closeModal();
+           }
+       }
 </script>
 </body>
 </html>
